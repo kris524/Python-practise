@@ -2,48 +2,49 @@
 
 def fold_array(array, runs):
 
-   
-    if len(array) % 2 == 0:
-        runs = runs - 1
-        #TODO
-        front_list = array[:len(array)//2]
-        back_list = array[len(array)//2:]
-        inverted_back_list = back_list[::-1]
-        # print(front_list, inverted_back_list)
-        new_list = [x + y for x, y in zip(front_list, inverted_back_list)]
-        # 
-        # print(runs)
-        
-        if runs == 0:
-            # print("HERE")
-            # print(new_list)
-            return new_list
-        else:
-            fold_array(new_list, runs)
+    while runs != 0:
+        length_array = len(array)
 
-    else:
-        
-        middleIndex = (len(array) - 1)/2
-        # print(middleIndex)
+        if length_array % 2 == 0:
+            
+            front_list = array[:len(array)//2]
+            back_list = array[len(array)//2:]
+            inverted_back_list = back_list[::-1]
+            new_list = [x + y for x, y in zip(front_list, inverted_back_list)]
 
-        front_list = array[0:int(middleIndex)]
+            array = new_list
+            runs-=1
 
-        back_list = array[int(middleIndex)+1:]
-        inverted_back_list = back_list[::-1]
-        print(front_list, back_list[::-1])
-        new_list = [x + y for x, y in zip(front_list, inverted_back_list)]
 
-        # print(new_list)
-        middle_number = array.pop(int(middleIndex))
-        new_list.append(int(middle_number))
-        print(new_list)
-        # runs = runs - 1
-        # fold_array(new_list, runs )
+            
+
+        if length_array%2  == 1:
+            middle = array[len(array) // 2]
+
+            front_list = array[:len(array) // 2]
+            back_list = array[len(array) // 2 + 1:]
+
+            inverted_back_list = back_list[::-1]
+            new_list = [x + y for x, y in zip(front_list, inverted_back_list)]
+
+            new_list.append(middle)
+
+            array = new_list
+            runs-=1
+
+    return array
 
 
 
-    
+def fold_array_perfect(array, runs):
+    nums = list(array)
+    # print(array)
+    for _ in range(runs):
+        for a in range(len(nums) // 2):
+            
+            # print("AAAA: ", a)
+            # print(nums[a])
+            nums[a] += nums.pop()
+    return nums
 
-
-
-    
+# fold_array_perfect([1,2,3,4,5], 1)
