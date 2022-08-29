@@ -36,7 +36,7 @@ def twoNumberSum3(array, targetSum):
     array.sort()
     i = 0
     j = len(array)-1
-    while i>j:
+    while i<j:
         if array[i] + array[j] == targetSum:
             return [array[i], array[j]]
         if array[i] + array[j] > targetSum:
@@ -49,3 +49,6 @@ def twoNumberSum3(array, targetSum):
             #move the left boundry
     
 print(twoNumberSum3([3,5,-4, 8,11,1,-1,6], 10))
+
+
+
