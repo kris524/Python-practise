@@ -12,4 +12,18 @@ def twoNumberSum(array, targetSum):
     return solutions[0:2]
 
 
-print(twoNumberSum([3,5,-4, 8,11,1,-1,6], 10))
+# print(twoNumberSum([3,5,-4, 8,11,1,-1,6], 10))
+
+
+def twoNumberSum2(array, targetSum):
+    # Write your code here.
+    # solution = []
+    for i in array:
+        j = targetSum - i 
+        if j in array and i!=j:
+            # solution.append(i)
+            # solution.append(j)
+            return [i, j]
+    return []
+
+            
